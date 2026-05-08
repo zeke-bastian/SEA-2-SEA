@@ -1,5 +1,5 @@
 <?php
-session_start(); // wake up the session or nobody gets in
+//session_start(); 
 
 // no session means no entry — back to login you go
 if (!isset($_SESSION['user_id'])) {
