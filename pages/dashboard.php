@@ -1,7 +1,7 @@
 <?php
-//session_start(); 
+require_once '../includes/auth.php'; // handles session start
 
-// no session means no entry — back to login you go
+// not logged in — back to login
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
