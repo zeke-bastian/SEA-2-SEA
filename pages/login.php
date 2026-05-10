@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
         $_SESSION['user_name'] = $user['name'];
 
         // redirect to dashboard on success
-        header("Location: dashboard.php");
+        header("Location: /c2c_platform/index.php");
         exit();
     } else {
         $error = "Invalid email or password.";

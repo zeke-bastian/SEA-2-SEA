@@ -14,6 +14,7 @@
     <a class="navbar-brand" href="/c2c_platform/index.php">C2C Marketplace</a>
     <div class="ms-auto">
         <?php if(isset($_SESSION['user_id'])): ?>
+            <a href="/c2c_platform/index.php" class="btn btn-outline-light btn-sm me-2">Browse</a>
             <a href="/c2c_platform/pages/dashboard.php" class="btn btn-outline-light btn-sm me-2">Dashboard</a>
             <a href="/c2c_platform/pages/logout.php" class="btn btn-danger btn-sm">Logout</a>
         <?php else: ?>
