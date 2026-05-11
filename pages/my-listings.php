@@ -45,6 +45,8 @@ require_once '../includes/header.php';
                         <td>
                             <a href="listing.php?id=<?= $listing['id'] ?>" 
                                class="btn btn-sm btn-primary">View</a>
+                               <a href="manage-listing.php?id=<?= $listing['id'] ?>" 
+   class="btn btn-sm btn-warning">Manage</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
