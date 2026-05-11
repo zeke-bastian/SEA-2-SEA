@@ -45,6 +45,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['bid'])) {
     }
 }
 
+// handle listing report
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['flag'])) {
+    $reason = trim(htmlspecialchars($_POST['reason']));
+
+    // insert flag — admin will review this
+    $flagStmt = $pdo->prepare("INSERT INTO flags (listing_id, reported_by, reason) 
+                                VALUES (:listing_id, :reported_by, :reason)");
+    $flagStmt->execute([
+        ':listing_id' => $id,
+        ':reported_by' => $_SESSION['user_id'],
+        ':reason' => $reason
+    ]);
+    $flagSuccess = "Listing reported successfully.";
+}
+
 // fetch all bids for this listing ordered by highest amount
 $bidsStmt = $pdo->prepare("SELECT bids.amount, users.name, bids.created_at 
                             FROM bids 
@@ -80,7 +95,7 @@ require_once '../includes/header.php';
                 Sold by: <?= $listing['seller_name'] . ' ' . $listing['seller_surname'] ?>
             </p>
 
-            <!-- success or error feedback -->
+            <!-- bid success or error feedback -->
             <?php if (isset($bidSuccess)): ?>
                 <div class="alert alert-success"><?= $bidSuccess ?></div>
             <?php endif; ?>
@@ -88,7 +103,7 @@ require_once '../includes/header.php';
                 <div class="alert alert-danger"><?= $bidError ?></div>
             <?php endif; ?>
 
-            <!-- bid form — hidden from the seller, they cannot bid on their own listing -->
+            <!-- bid form — hidden from seller, they cannot bid on their own listing -->
             <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != $listing['seller_id']): ?>
                 <form method="POST" action="" class="mt-3">
                     <div class="input-group">
@@ -102,7 +117,7 @@ require_once '../includes/header.php';
                 <a href="login.php" class="btn btn-outline-primary mt-3">Login to Bid</a>
             <?php endif; ?>
 
-            <!-- bids table — shows all bids highest first -->
+            <!-- bids table — highest first -->
             <?php if (count($bids) > 0): ?>
                 <h5 class="mt-4">Current Bids</h5>
                 <table class="table table-sm table-bordered">
@@ -123,6 +138,27 @@ require_once '../includes/header.php';
                         <?php endforeach; ?>
                     </tbody>
                 </table>
+            <?php endif; ?>
+
+            <!-- report section — hidden from seller and logged out users -->
+            <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != $listing['seller_id']): ?>
+                <div class="mt-4">
+                    <h6 class="text-danger">Report this listing</h6>
+
+                    <?php if (isset($flagSuccess)): ?>
+                        <div class="alert alert-success"><?= $flagSuccess ?></div>
+                    <?php endif; ?>
+
+                    <form method="POST" action="">
+                        <div class="mb-2">
+                            <textarea name="reason" class="form-control" rows="2"
+                                      placeholder="Reason for reporting..." required></textarea>
+                        </div>
+                        <button type="submit" name="flag" class="btn btn-danger btn-sm">
+                            Report Listing
+                        </button>
+                    </form>
+                </div>
             <?php endif; ?>
 
         </div>
