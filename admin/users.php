@@ -8,29 +8,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_user'])) {
     if ($_SESSION['admin_role'] === 'superadmin') {
         $uid = (int)$_POST['user_id'];
 
-        // delete in order of dependency — child records first
-        // bids placed by this user
+        // step 1 — delete bids placed by this user
         $pdo->prepare("DELETE FROM bids WHERE bidder_id = :id")
             ->execute([':id' => $uid]);
 
-        // flags submitted by this user
-        $pdo->prepare("DELETE FROM flags WHERE reported_by = :id")
-            ->execute([':id' => $uid]);
-
-        // orders where this user is buyer or seller
-        $pdo->prepare("DELETE FROM orders WHERE buyer_id = :id OR seller_id = :id")
-            ->execute([':id' => $uid]);
-
-        // bids on this user's listings before deleting the listings
+        // step 2 — delete bids on this user's listings
         $pdo->prepare("DELETE FROM bids WHERE listing_id IN 
                        (SELECT id FROM listings WHERE seller_id = :id)")
             ->execute([':id' => $uid]);
 
-        // listings belonging to this user
+        // step 3 — delete flags on this user's listings
+        $pdo->prepare("DELETE FROM flags WHERE listing_id IN 
+                       (SELECT id FROM listings WHERE seller_id = :id)")
+            ->execute([':id' => $uid]);
+
+        // step 4 — delete flags submitted by this user
+        $pdo->prepare("DELETE FROM flags WHERE reported_by = :id")
+            ->execute([':id' => $uid]);
+
+        // step 5 — delete orders where this user is buyer or seller
+        $pdo->prepare("DELETE FROM orders WHERE buyer_id = :id OR seller_id = :id")
+            ->execute([':id' => $uid]);
+
+        // step 6 — now safe to delete listings
         $pdo->prepare("DELETE FROM listings WHERE seller_id = :id")
             ->execute([':id' => $uid]);
 
-        // finally safe to delete the user
+        // step 7 — finally delete the user
         $pdo->prepare("DELETE FROM users WHERE id = :id")
             ->execute([':id' => $uid]);
 
