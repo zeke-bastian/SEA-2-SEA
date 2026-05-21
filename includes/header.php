@@ -1,4 +1,9 @@
-
+<?php
+// only start session if one is not already active
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,11 +15,15 @@
 </head>
 <body>
 
+<!-- prototype warning — visible on every page -->
+
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
-    <a class="navbar-brand" href="/c2c_platform/index.php">C2C Marketplace</a>
+    <a class="navbar-brand" href="/c2c_platform/index.php">🛒 C2C Marketplace</a>
     <div class="ms-auto">
         <?php if(isset($_SESSION['user_id'])): ?>
             <a href="/c2c_platform/index.php" class="btn btn-outline-light btn-sm me-2">Browse</a>
+            <a href="/c2c_platform/pages/profile.php" class="btn btn-outline-light btn-sm me-2">Profile</a>
             <a href="/c2c_platform/pages/dashboard.php" class="btn btn-outline-light btn-sm me-2">Dashboard</a>
             <a href="/c2c_platform/pages/logout.php" class="btn btn-danger btn-sm">Logout</a>
         <?php else: ?>

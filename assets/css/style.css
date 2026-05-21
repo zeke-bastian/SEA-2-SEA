@@ -1,0 +1,66 @@
+/* global body styling */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* navbar brand pop */
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+}
+
+/* listing cards — subtle hover lift effect */
+.card {
+    border: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+/* card image consistent height */
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* prototype warning banner */
+.prototype-banner {
+    background-color: #fff3cd;
+    border-bottom: 2px solid #ffc107;
+    text-align: center;
+    padding: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* search bar on homepage */
+.search-bar {
+    max-width: 500px;
+    margin: 0 auto 30px auto;
+}
+
+/* admin navbar override — red to distinguish from customer site */
+.admin-nav {
+    background-color: #dc3545;
+}
+
+/* status badges */
+.badge-active { background-color: #28a745; }
+.badge-sold { background-color: #6c757d; }
+.badge-removed { background-color: #dc3545; }
+
+/* footer */
+.site-footer {
+    background-color: #343a40;
+    color: #adb5bd;
+    text-align: center;
+    padding: 20px;
+    margin-top: 60px;
+    font-size: 0.85rem;
+}

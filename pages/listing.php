@@ -102,6 +102,11 @@ require_once '../includes/header.php';
             <?php if (isset($bidError)): ?>
                 <div class="alert alert-danger"><?= $bidError ?></div>
             <?php endif; ?>
+            <!-- buy now button — goes straight to checkout -->
+<?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != $listing['seller_id']): ?>
+    <a href="checkout.php?listing_id=<?= $listing['id'] ?>" 
+       class="btn btn-success mt-2 mb-3">Buy Now — R <?= number_format($listing['price'], 2) ?></a>
+<?php endif; ?>
 
             <!-- bid form — hidden from seller, they cannot bid on their own listing -->
             <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != $listing['seller_id']): ?>

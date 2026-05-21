@@ -7,11 +7,35 @@ require_once 'header.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_user'])) {
     if ($_SESSION['admin_role'] === 'superadmin') {
         $uid = (int)$_POST['user_id'];
-        $stmt = $pdo->prepare("DELETE FROM users WHERE id = :id");
-        $stmt->execute([':id' => $uid]);
-        $success = "User deleted.";
+
+        // delete in order of dependency — child records first
+        // bids placed by this user
+        $pdo->prepare("DELETE FROM bids WHERE bidder_id = :id")
+            ->execute([':id' => $uid]);
+
+        // flags submitted by this user
+        $pdo->prepare("DELETE FROM flags WHERE reported_by = :id")
+            ->execute([':id' => $uid]);
+
+        // orders where this user is buyer or seller
+        $pdo->prepare("DELETE FROM orders WHERE buyer_id = :id OR seller_id = :id")
+            ->execute([':id' => $uid]);
+
+        // bids on this user's listings before deleting the listings
+        $pdo->prepare("DELETE FROM bids WHERE listing_id IN 
+                       (SELECT id FROM listings WHERE seller_id = :id)")
+            ->execute([':id' => $uid]);
+
+        // listings belonging to this user
+        $pdo->prepare("DELETE FROM listings WHERE seller_id = :id")
+            ->execute([':id' => $uid]);
+
+        // finally safe to delete the user
+        $pdo->prepare("DELETE FROM users WHERE id = :id")
+            ->execute([':id' => $uid]);
+
+        $success = "User and all associated data deleted.";
     } else {
-        // moderators cannot delete users — nice try
         $error = "You do not have permission to delete users.";
     }
 }
