@@ -1,5 +1,12 @@
 /* ===== COLOR PALETTE ===== */
 :root {
+    --bs-primary: #14b8a6;
+    --bs-primary-rgb: 20, 184, 166;
+    --bs-primary-text-emphasis: #0d9488;
+    --bs-primary-bg-subtle: #ccfbf1;
+    --bs-primary-border-subtle: #99f6e4;
+    --bs-link-color: #14b8a6;
+    --bs-link-hover-color: #0d9488;
     --primary-teal: #14b8a6;
     --secondary-teal: #0d9488;
     --accent-cyan: #06b6d4;
