@@ -17,7 +17,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 
 
-<nav class="navbar navbar-expand-lg navbar-dark px-4">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
     <a class="navbar-brand" href="/c2c_platform/index.php">SEA-2-SEA</a>
     <div class="ms-auto">
         <?php if(isset($_SESSION['user_id'])): ?>

@@ -15,7 +15,7 @@ if (!isset($_SESSION['admin_id'])) {
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark px-4">
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger px-4">
     <a class="navbar-brand" href="/c2c_platform/admin/index.php">SEA-2-SEA Admin</a>
     <div class="ms-auto">
         <!-- show admin name and role in navbar -->
