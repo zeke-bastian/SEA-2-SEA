@@ -2,7 +2,12 @@
 require_once 'includes/auth.php';
 require_once 'includes/db.php';
 require_once 'includes/header.php';
+?>
 
+
+
+<?php
+// fetch all active listings newest first
 // fetch all active listings newest first
 $stmt = $pdo->query("SELECT * FROM listings WHERE status = 'active' ORDER BY created_at DESC");
 $listings = $stmt->fetchAll();
@@ -40,18 +45,26 @@ $categories = $pdo->query("SELECT DISTINCT category FROM listings WHERE category
                             <img src="/c2c_platform/assets/uploads/<?= $listing['image'] ?>"
                                  class="card-img-top">
                         <?php else: ?>
-                            <div class="bg-secondary text-white text-center py-5">No Image</div>
-                        <?php endif; ?>
+    <div class="text-center py-5"
+         style="background: linear-gradient(135deg, #0d2137, #0a1e3d);
+                color: #00d4aa; border-bottom: 2px solid #0d7a6b;">
+         No Image
+    </div>
+<?php endif; ?>
 
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $listing['title'] ?></h5>
-                            <p class="text-muted small"><?= $listing['category'] ?></p>
-                            <p class="card-text text-success fw-bold">
-                                R <?= number_format($listing['price'], 2) ?>
-                            </p>
-                            <a href="pages/listing.php?id=<?= $listing['id'] ?>"
-                               class="btn btn-primary btn-sm">View</a>
-                        </div>
+<div class="card-body">
+    <h5 class="card-title"><?= $listing['title'] ?></h5>
+    <p class="small mb-1" style="color: #6a9c8a;"><?= $listing['category'] ?></p>
+    <p class="fw-bold mb-3" style="color: #00d4aa;">
+        R <?= number_format($listing['price'], 2) ?>
+    </p>
+    <a href="pages/listing.php?id=<?= $listing['id'] ?>"
+       class="btn btn-sm w-100"
+       style="background: linear-gradient(135deg, #0d7a6b, #0a4d8c);
+              border: 2px solid #00d4aa; color: #fff;">
+        View Listing
+    </a>
+</div>
                     </div>
                 </div>
             <?php endforeach; ?>
