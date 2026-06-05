@@ -1,5 +1,4 @@
 <?php
-// only start session if one is not already active
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -9,56 +8,51 @@ if (session_status() === PHP_SESSION_NONE) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SEA-2-SEA</title>
-<!-- Brite theme from Bootswatch — local copy -->
-<link rel="stylesheet" href="/c2c_platform/assets/css/bootstrap.min.css">
-<!-- SEA-2-SEA custom styles on top -->
-<link rel="stylesheet" href="/c2c_platform/assets/css/style.css">
+    <title>SEA-2-SEA Marketplace</title>
+    <link rel="stylesheet" href="/c2c_platform/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/c2c_platform/assets/css/style.css">
 </head>
 <body>
 
-<!-- inline style forces ocean gradient over Brite theme overrides -->
-<nav class="navbar navbar-expand-lg navbar-dark px-4"
-     style="background: linear-gradient(135deg, #0d7a6b 0%, #0a1e3d 100%) !important;
-            border-bottom: 3px solid #00d4aa;">
 
-    <a class="navbar-brand" href="/c2c_platform/index.php"
-       style="color: #00d4aa !important; font-weight: 800;
-              text-transform: uppercase; letter-spacing: 1px;">
-         SEA-2-SEA
-    </a>
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
 
-    <!-- mobile toggle button -->
-    <button class="navbar-toggler" type="button"
-            data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            style="border-color: #00d4aa;">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+        <a class="navbar-brand" href="/c2c_platform/index.php">
+            <!-- logo — onerror hides it if file not found yet -->
+            <img src="/c2c_platform/assets/images/logo.png" alt="SEA-2-SEA"
+                 onerror="this.style.display='none'">
+             SEA-2-SEA
+        </a>
 
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <div class="ms-auto d-flex align-items-center gap-2">
-            <?php if(isset($_SESSION['user_id'])): ?>
-                <a href="/c2c_platform/index.php"
-                   class="btn btn-sm"
-                   style="border: 2px solid #00d4aa; color: #00d4aa;">Browse</a>
-                <a href="/c2c_platform/pages/profile.php"
-                   class="btn btn-sm"
-                   style="border: 2px solid #00d4aa; color: #00d4aa;">Profile</a>
-                <a href="/c2c_platform/pages/dashboard.php"
-                   class="btn btn-sm"
-                   style="border: 2px solid #00d4aa; color: #00d4aa;">Dashboard</a>
-                <a href="/c2c_platform/pages/logout.php"
-                   class="btn btn-sm"
-                   style="background:#c0392b; border-color:#c0392b; color:#fff;">Logout</a>
-            <?php else: ?>
-                <a href="/c2c_platform/pages/login.php"
-                   class="btn btn-sm"
-                   style="border: 2px solid #00d4aa; color: #00d4aa;">Login</a>
-                <a href="/c2c_platform/pages/register.php"
-                   class="btn btn-sm"
-                   style="background: linear-gradient(135deg, #0d7a6b, #0a4d8c);
-                          border: 2px solid #00d4aa; color: #fff; font-weight: 700;">Register</a>
-            <?php endif; ?>
+        <!-- mobile hamburger -->
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+            <div class="ms-auto d-flex flex-wrap align-items-center gap-2 py-2 py-lg-0">
+                <?php if(isset($_SESSION['user_id'])): ?>
+                    <a href="/c2c_platform/index.php"
+                       class="btn btn-sm btn-outline-primary">Browse</a>
+                    <a href="/c2c_platform/pages/create-listing.php"
+                       class="btn btn-sm btn-success">+ Sell</a>
+                    <a href="/c2c_platform/pages/profile.php"
+                       class="btn btn-sm btn-outline-primary">Profile</a>
+                    <a href="/c2c_platform/pages/dashboard.php"
+                       class="btn btn-sm btn-outline-primary">Dashboard</a>
+                    <a href="/c2c_platform/pages/logout.php"
+                       class="btn btn-sm btn-danger">Logout</a>
+                <?php else: ?>
+                    <a href="/c2c_platform/pages/login.php"
+                       class="btn btn-sm btn-outline-primary">Login</a>
+                    <a href="/c2c_platform/pages/register.php"
+                       class="btn btn-sm btn-primary">Register</a>
+                <?php endif; ?>
+            </div>
         </div>
+
     </div>
 </nav>

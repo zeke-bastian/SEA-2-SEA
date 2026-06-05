@@ -1,5 +1,4 @@
 <?php
-// check admin session — every admin page must include this at the top
 if (!isset($_SESSION['admin_id'])) {
     header("Location: login.php");
     exit();
@@ -9,38 +8,71 @@ if (!isset($_SESSION['admin_id'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SEA-2-SEA Admin</title>
-<!-- Brite theme from Bootswatch — local copy -->
-<link rel="stylesheet" href="/c2c_platform/assets/css/bootstrap.min.css">
-<!-- SEA-2-SEA custom styles on top -->
-<link rel="stylesheet" href="/c2c_platform/assets/css/style.css">
+    <link rel="stylesheet" href="/c2c_platform/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/c2c_platform/assets/css/style.css">
 </head>
 <body>
 
-<!-- admin navbar — darker navy to distinguish from customer site -->
-<nav class="navbar navbar-expand-lg navbar-dark px-4"
-     style="background: linear-gradient(135deg, #0a1e3d 0%, #071428 100%) !important;
-            border-bottom: 3px solid #00d4aa;">
+<nav class="navbar navbar-expand-lg navbar-dark"
+     style="background: linear-gradient(135deg, #071428 0%, #0d2137 100%) !important;
+            border-bottom: 2px solid var(--aqua);">
+    <div class="container-fluid">
 
-    <a class="navbar-brand" href="/c2c_platform/admin/index.php"
-       style="color: #00d4aa !important; font-weight: 800;
-              text-transform: uppercase; letter-spacing: 1px;">
-        SEA-2-SEA Admin
-    </a>
-
-    <div class="ms-auto d-flex align-items-center gap-3">
-        <span style="color: #e0f0ee; font-size: 0.9rem;">
-            <?= $_SESSION['admin_name'] ?>
-            <span class="badge ms-1"
-                  style="background: linear-gradient(135deg, #0d7a6b, #0a4d8c);
-                         border: 1px solid #00d4aa; font-size: 0.7rem;">
-                <?= ucfirst($_SESSION['admin_role']) ?>
-            </span>
-        </span>
-        <a href="/c2c_platform/admin/logout.php"
-           class="btn btn-sm"
-           style="border: 2px solid #c0392b; color: #c0392b;">
-            Logout
+        <a class="navbar-brand" href="/c2c_platform/admin/index.php">
+            <img src="/c2c_platform/assets/images/logo.png" alt="Logo" height="32"
+                 onerror="this.style.display='none'">
+            Admin Panel
         </a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#adminNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="adminNav">
+
+            <!-- nav links to each admin section -->
+            <ul class="navbar-nav me-auto gap-1">
+                <li class="nav-item">
+                    <a class="nav-link" href="/c2c_platform/admin/index.php">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/c2c_platform/admin/users.php">Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/c2c_platform/admin/listings.php">Listings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/c2c_platform/admin/flags.php">Flags</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/c2c_platform/admin/orders.php">Orders</a>
+                </li>
+                <?php if ($_SESSION['admin_role'] === 'superadmin'): ?>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="/c2c_platform/admin/manage-admins.php">
+                           Manage Admins
+                        </a>
+                    </li>
+                <?php endif; ?>
+            </ul>
+
+            <div class="d-flex align-items-center gap-2">
+                <span style="color:#e0f0ee; font-size:0.85rem;">
+                    <?= htmlspecialchars($_SESSION['admin_name']) ?>
+                    <span class="badge ms-1"
+                          style="background:rgba(0,212,170,0.12); color:var(--aqua);
+                                 border:1px solid rgba(0,212,170,0.35); font-size:0.68rem;">
+                        <?= ucfirst($_SESSION['admin_role']) ?>
+                    </span>
+                </span>
+                <a href="/c2c_platform/admin/logout.php"
+                   class="btn btn-sm btn-danger">Logout</a>
+            </div>
+
+        </div>
     </div>
 </nav>
