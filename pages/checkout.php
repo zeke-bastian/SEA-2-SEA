@@ -61,11 +61,11 @@ require_once '../includes/header.php';
             <?php if (isset($success) && $success): ?>
                 <!-- order confirmed -->
                 <div class="text-center py-5">
-                    <h2 class="text-success">✅ Payment Confirmed</h2>
+                    <h2 class="text-success">Payment Confirmed</h2>
                     <p class="lead">Your order for <strong><?= $listing['title'] ?></strong> 
                        has been placed.</p>
                     <div class="alert alert-warning mt-3">
-                        ⚠️ This is a simulated payment. No real transaction occurred.
+                         This is a simulated payment. No real transaction occurred.
                     </div>
                     <a href="orders.php" class="btn btn-primary mt-3">View My Orders</a>
                 </div>
@@ -76,7 +76,7 @@ require_once '../includes/header.php';
 
                 <!-- simulated payment notice -->
                 <div class="alert alert-warning mb-4">
-                    ⚠️ This is a prototype. Payment is simulated — no real charges occur.
+                    This is a prototype. Payment is simulated — no real charges occur.
                 </div>
 
                 <!-- order summary card -->
