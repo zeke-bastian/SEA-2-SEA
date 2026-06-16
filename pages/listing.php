@@ -15,7 +15,7 @@ $listing = $stmt->fetch();
 
 // listing not found — nothing to see here
 if (!$listing) {
-    header("Location: ../index.php");
+    header("Location: /index.php");
     exit();
 }
 
@@ -78,7 +78,7 @@ require_once '../includes/header.php';
         <!-- left: listing image -->
         <div class="col-md-6">
             <?php if ($listing['image']): ?>
-                <img src="/c2c_platform/assets/uploads/<?= $listing['image'] ?>"
+                <img src="/assets/uploads/<?= $listing['image'] ?>"
                      class="img-fluid rounded">
             <?php else: ?>
                 <div class="bg-secondary text-white text-center py-5 rounded">No Image</div>

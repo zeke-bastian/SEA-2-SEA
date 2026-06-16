@@ -19,7 +19,7 @@ $stmt->execute([':id' => $listing_id]);
 $listing = $stmt->fetch();
 
 if (!$listing) {
-    header("Location: ../index.php");
+    header("Location: /index.php");
     exit();
 }
 
@@ -67,7 +67,7 @@ require_once '../includes/header.php';
                     <div class="alert alert-warning mt-3">
                          This is a simulated payment. No real transaction occurred.
                     </div>
-                    <a href="orders.php" class="btn btn-primary mt-3">View My Orders</a>
+                    <a href="/pages/orders.php" class="btn btn-primary mt-3">View My Orders</a>
                 </div>
 
             <?php else: ?>

@@ -9,8 +9,8 @@ if (session_status() === PHP_SESSION_NONE) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SEA-2-SEA Marketplace</title>
-    <link rel="stylesheet" href="/c2c_platform/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/c2c_platform/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
 
@@ -18,9 +18,9 @@ if (session_status() === PHP_SESSION_NONE) {
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
 
-        <a class="navbar-brand" href="/c2c_platform/index.php">
+        <a class="navbar-brand" href="/index.php">
             <!-- logo — onerror hides it if file not found yet -->
-            <img src="/c2c_platform/assets/images/logo.png" alt="SEA-2-SEA"
+            <img src="/assets/images/logo.png" alt="SEA-2-SEA"
                  onerror="this.style.display='none'">
              SEA-2-SEA
         </a>
@@ -35,20 +35,20 @@ if (session_status() === PHP_SESSION_NONE) {
         <div class="collapse navbar-collapse" id="mainNav">
             <div class="ms-auto d-flex flex-wrap align-items-center gap-2 py-2 py-lg-0">
                 <?php if(isset($_SESSION['user_id'])): ?>
-                    <a href="/c2c_platform/index.php"
+                    <a href="/index.php"
                        class="btn btn-sm btn-outline-primary">Browse</a>
-                    <a href="/c2c_platform/pages/create-listing.php"
+                    <a href="/pages/create-listing.php"
                        class="btn btn-sm btn-success">+ Sell</a>
-                    <a href="/c2c_platform/pages/profile.php"
+                    <a href="/pages/profile.php"
                        class="btn btn-sm btn-outline-primary">Profile</a>
-                    <a href="/c2c_platform/pages/dashboard.php"
+                    <a href="/pages/dashboard.php"
                        class="btn btn-sm btn-outline-primary">Dashboard</a>
-                    <a href="/c2c_platform/pages/logout.php"
+                    <a href="/pages/logout.php"
                        class="btn btn-sm btn-danger">Logout</a>
                 <?php else: ?>
-                    <a href="/c2c_platform/pages/login.php"
+                    <a href="/pages/login.php"
                        class="btn btn-sm btn-outline-primary">Login</a>
-                    <a href="/c2c_platform/pages/register.php"
+                    <a href="/pages/register.php"
                        class="btn btn-sm btn-primary">Register</a>
                 <?php endif; ?>
             </div>

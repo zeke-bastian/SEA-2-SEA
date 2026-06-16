@@ -37,9 +37,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
     <meta charset="UTF-8">
     <title>Admin Login</title>
 <!-- Brite theme from Bootswatch — local copy -->
-<link rel="stylesheet" href="/c2c_platform/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/css/bootstrap.min.css">
 <!-- SEA-2-SEA custom styles on top -->
-<link rel="stylesheet" href="/c2c_platform/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
 

@@ -3,7 +3,7 @@ require_once '../includes/auth.php'; // handles session start
 
 // not logged in — back to login
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: /pages/login.php");
     exit();
 }
 
@@ -36,7 +36,7 @@ require_once '../includes/header.php';
                 <div class="card-body">
                     <h5 class="card-title">My Listings</h5>
                     <p class="card-text">View and manage items you are selling.</p>
-                    <a href="my-listings.php" class="btn btn-primary btn-sm">View Listings</a>
+                    <a href="/pages/my-listings.php" class="btn btn-primary btn-sm">View Listings</a>
                 </div>
             </div>
         </div>
@@ -47,7 +47,7 @@ require_once '../includes/header.php';
                 <div class="card-body">
                     <h5 class="card-title">Order History</h5>
                     <p class="card-text">See everything you have bought.</p>
-                    <a href="orders.php" class="btn btn-primary btn-sm">View Orders</a>
+                    <a href="/pages/orders.php" class="btn btn-primary btn-sm">View Orders</a>
                 </div>
             </div>
         </div>

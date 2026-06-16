@@ -3,7 +3,7 @@ require_once '../includes/auth.php';
 
 // session check — members only
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: /pages/login.php");
     exit();
 }
 
@@ -54,7 +54,7 @@ require_once '../includes/header.php';
     <?php else: ?>
         <!-- no orders yet — send them shopping -->
         <p class="text-muted">You have not made any purchases yet.</p>
-        <a href="../index.php" class="btn btn-primary">Browse Listings</a>
+        <a href="/index.php" class="btn btn-primary">Browse Listings</a>
     <?php endif; ?>
 </div>
 

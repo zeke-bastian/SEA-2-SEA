@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
                 ':password' => $hashed
             ]);
             // redirect to login on success
-            header("Location: login.php");
+            header("Location: /pages/login.php");
             exit();
         } catch (PDOException $e) {
             // catches duplicate email since email column is UNIQUE in database

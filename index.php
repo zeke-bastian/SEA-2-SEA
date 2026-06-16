@@ -16,14 +16,14 @@ $categories = $pdo->query("SELECT DISTINCT category FROM listings
         <h1>SEA-2-SEA Marketplace</h1>
         <p>Buy and sell anything from coast to coast.</p>
         <?php if (!isset($_SESSION['user_id'])): ?>
-            <a href="pages/register.php" class="btn btn-primary btn-lg me-2">
+            <a href="/pages/register.php" class="btn btn-primary btn-lg me-2">
                 Get Started
             </a>
             <a href="pages/login.php" class="btn btn-outline-primary btn-lg">
                 Login
             </a>
         <?php else: ?>
-            <a href="pages/create-listing.php" class="btn btn-primary btn-lg">
+            <a href="/pages/create-listing.php" class="btn btn-primary btn-lg">
                 + List an Item
             </a>
         <?php endif; ?>
@@ -64,7 +64,7 @@ $categories = $pdo->query("SELECT DISTINCT category FROM listings
                          data-category="<?= htmlspecialchars($listing['category']) ?>">
 
                         <?php if ($listing['image']): ?>
-                            <img src="/c2c_platform/assets/uploads/<?= $listing['image'] ?>"
+                            <img src="/assets/uploads/<?= $listing['image'] ?>"
                                  class="card-img-top">
                         <?php else: ?>
                             <div class="no-image-placeholder">🌊</div>
@@ -86,7 +86,7 @@ $categories = $pdo->query("SELECT DISTINCT category FROM listings
                                 <span class="fw-bold fs-5" style="color:var(--aqua);">
                                     R <?= number_format($listing['price'], 2) ?>
                                 </span>
-                                <a href="pages/listing.php?id=<?= $listing['id'] ?>"
+                                <a href="/pages/listing.php?id=<?= $listing['id'] ?>"
                                    class="btn btn-primary btn-sm">
                                     View →
                                 </a>

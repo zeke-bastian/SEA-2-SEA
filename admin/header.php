@@ -10,8 +10,8 @@ if (!isset($_SESSION['admin_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SEA-2-SEA Admin</title>
-    <link rel="stylesheet" href="/c2c_platform/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/c2c_platform/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
 
@@ -20,8 +20,8 @@ if (!isset($_SESSION['admin_id'])) {
             border-bottom: 2px solid var(--aqua);">
     <div class="container-fluid">
 
-        <a class="navbar-brand" href="/c2c_platform/admin/index.php">
-            <img src="/c2c_platform/assets/images/logo.png" alt="Logo" height="32"
+        <a class="navbar-brand" href="/admin/index.php">
+            <img src="/assets/images/logo.png" alt="Logo" height="32"
                  onerror="this.style.display='none'">
             Admin Panel
         </a>
@@ -36,24 +36,24 @@ if (!isset($_SESSION['admin_id'])) {
             <!-- nav links to each admin section -->
             <ul class="navbar-nav me-auto gap-1">
                 <li class="nav-item">
-                    <a class="nav-link" href="/c2c_platform/admin/index.php">Dashboard</a>
+                    <a class="nav-link" href="/admin/index.php">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/c2c_platform/admin/users.php">Users</a>
+                    <a class="nav-link" href="/admin/users.php">Users</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/c2c_platform/admin/listings.php">Listings</a>
+                    <a class="nav-link" href="/admin/listings.php">Listings</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/c2c_platform/admin/flags.php">Flags</a>
+                    <a class="nav-link" href="/admin/flags.php">Flags</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/c2c_platform/admin/orders.php">Orders</a>
+                    <a class="nav-link" href="/admin/orders.php">Orders</a>
                 </li>
                 <?php if ($_SESSION['admin_role'] === 'superadmin'): ?>
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="/c2c_platform/admin/manage-admins.php">
+                           href="/admin/manage-admins.php">
                            Manage Admins
                         </a>
                     </li>
@@ -69,7 +69,7 @@ if (!isset($_SESSION['admin_id'])) {
                         <?= ucfirst($_SESSION['admin_role']) ?>
                     </span>
                 </span>
-                <a href="/c2c_platform/admin/logout.php"
+                <a href="/admin/logout.php"
                    class="btn btn-sm btn-danger">Logout</a>
             </div>
 

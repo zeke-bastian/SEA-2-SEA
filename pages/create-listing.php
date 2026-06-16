@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create'])) {
     ]);
 
     // back to dashboard after successful listing
-    header("Location: dashboard.php");
+    header("Location: /pages/dashboard.php");
     exit();
 }
 

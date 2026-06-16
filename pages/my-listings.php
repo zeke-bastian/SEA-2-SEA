@@ -3,7 +3,7 @@ require_once '../includes/auth.php';
 
 // session check — no sneaking in
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: /pages/login.php");
     exit();
 }
 
@@ -43,7 +43,7 @@ require_once '../includes/header.php';
                         <!-- format date from MySQL timestamp to readable format -->
                         <td><?= date('d M Y', strtotime($listing['created_at'])) ?></td>
                         <td>
-                            <a href="listing.php?id=<?= $listing['id'] ?>" 
+                            <a href="/pages/listing.php?id=<?= $listing['id'] ?>" 
                                class="btn btn-sm btn-primary">View</a>
                                <a href="manage-listing.php?id=<?= $listing['id'] ?>" 
    class="btn btn-sm btn-warning">Manage</a>
@@ -55,7 +55,7 @@ require_once '../includes/header.php';
     <?php else: ?>
         <!-- no listings yet — nudge them to create one -->
         <p class="text-muted">You have not listed anything yet.</p>
-        <a href="create-listing.php" class="btn btn-primary">Create Listing</a>
+        <a href="/pages/create-listing.php" class="btn btn-primary">Create Listing</a>
     <?php endif; ?>
 </div>
 
