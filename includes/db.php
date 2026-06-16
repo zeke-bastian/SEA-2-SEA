@@ -1,8 +1,8 @@
 <?php
-$host = 'localhost';
-$dbname = 'c2c_platform';
-$username = 'root';
-$password = '';
+$host = 'sql204.infinityfree.com';
+$dbname = 'if0_42165908_sea2sea';
+$username = 'if0_42165908';
+$password = 'viREvfnxdy5jT4J';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
