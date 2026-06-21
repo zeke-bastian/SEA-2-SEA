@@ -12,16 +12,16 @@
 
             <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
                 <h6>Marketplace</h6>
-                <a href="/c2c_platform/index.php">Browse Listings</a>
-                <a href="/c2c_platform/pages/create-listing.php">Sell an Item</a>
-                <a href="/c2c_platform/pages/register.php">Create Account</a>
+                <a href="index.php">Browse Listings</a>
+                <a href="/pages/create-listing.php">Sell an Item</a>
+                <a href="pages/register.php">Create Account</a>
             </div>
 
             <div class="col-lg-4 col-md-6">
                 <h6>Account</h6>
-                <a href="/c2c_platform/pages/dashboard.php">Dashboard</a>
-                <a href="/c2c_platform/pages/orders.php">Order History</a>
-                <a href="/c2c_platform/pages/profile.php">Edit Profile</a>
+                <a href="/pages/dashboard.php">Dashboard</a>
+                <a href="/pages/orders.php">Order History</a>
+                <a href="/pages/profile.php">Edit Profile</a>
             </div>
 
         </div>
